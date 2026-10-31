@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "project": "La Ligue des Ferrailleurs",
+  "slug": "ligue-ferrailleurs",
+  "kind": "one-off-mission",
+  "startedAt": "2026-11-01T00:13:25+01:00",
+  "status": "developing-prototype",
+  "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1",
+  "identity": {
+    "lob7": "Kimi Games",
+    "publicId": "usr_zxb87j1k",
+    "github": "codex-lm"
+  },
+  "phases": [
+    {"id": "prototype", "scope": "Two chassis, three modules, one arena", "status": "in_progress"},
+    {"id": "assets", "scope": "Blender sources, GLB models, standardized attachments", "status": "pending"},
+    {"id": "complete-game", "scope": "Three chassis, ten modules, tactics and three arena kits", "status": "pending"},
+    {"id": "progression", "scope": "Six-fight campaign, nine research nodes, test range and local blueprints", "status": "pending"},
+    {"id": "verification", "scope": "Rules, balance, browser and responsive checks", "status": "pending"},
+    {"id": "publication", "scope": "Public GitHub repository, LOB7 preparation and public play", "status": "pending"}
+  ],
+  "prototypeEvidence": null,
+  "configurationsTried": [],
+  "validation": {},
+  "remote": {
+    "repository": null,
+    "developmentCommit": null,
+    "publicationCommit": null,
+    "draftId": null,
+    "releaseId": null,
+    "gameId": null,
+    "variantId": null,
+    "playUrl": null
+  },
+  "limitations": [],
+  "scheduledTasksChanged": false,
+  "otherProjectsChanged": false
+}

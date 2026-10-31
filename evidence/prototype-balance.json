@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "stage": "prototype",
+  "configurations": {
+    "rivetGuard": [
+      {
+        "id": "guard",
+        "chassis": "heavy",
+        "modules": [
+          {
+            "id": "blade",
+            "socket": "left"
+          },
+          {
+            "id": "repair",
+            "socket": "top"
+          }
+        ],
+        "behavior": "nearest"
+      },
+      {
+        "id": "striker",
+        "chassis": "heavy",
+        "modules": [
+          {
+            "id": "blade",
+            "socket": "left"
+          }
+        ],
+        "behavior": "nearest"
+      },
+      {
+        "id": "mender",
+        "chassis": "light",
+        "modules": [
+          {
+            "id": "blade",
+            "socket": "left"
+          },
+          {
+            "id": "repair",
+            "socket": "top"
+          }
+        ],
+        "behavior": "nearest"
+      }
+    ],
+    "sparkSkirmish": [
+      {
+        "id": "skirmisher",
+        "chassis": "light",
+        "modules": [
+          {
+            "id": "blaster",
+            "socket": "left"
+          },
+          {
+            "id": "repair",
+            "socket": "top"
+          }
+        ],
+        "behavior": "keepRange"
+      },
+      {
+        "id": "needle",
+        "chassis": "light",
+        "modules": [
+          {
+            "id": "blaster",
+            "socket": "left"
+          }
+        ],
+        "behavior": "keepRange"
+      },
+      {
+        "id": "anchor",
+        "chassis": "heavy",
+        "modules": [
+          {
+            "id": "blaster",
+            "socket": "left"
+          },
+          {
+            "id": "repair",
+            "socket": "top"
+          }
+        ],
+        "behavior": "keepRange"
+      }
+    ],
+    "mixedScrap": [
+      {
+        "id": "wall",
+        "chassis": "heavy",
+        "modules": [
+          {
+            "id": "blade",
+            "socket": "left"
+          },
+          {
+            "id": "repair",
+            "socket": "top"
+          }
+        ],
+        "behavior": "protect"
+      },
+      {
+        "id": "flanker",
+        "chassis": "light",
+        "modules": [
+          {
+            "id": "blade",
+            "socket": "left"
+          }
+        ],
+        "behavior": "nearest"
+      },
+      {
+        "id": "shooter",
+        "chassis": "light",
+        "modules": [
+          {
+            "id": "blaster",
+            "socket": "left"
+          }
+        ],
+        "behavior": "keepRange"
+      }
+    ]
+  },
+  "duels": [
+    {
+      "left": "rivetGuard",
+      "right": "sparkSkirmish",
+      "forward": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 260,
+        "playerHull": 0,
+        "enemyHull": 196,
+        "playerDamage": 16,
+        "enemyDamage": 626
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 217,
+        "playerHull": 196,
+        "enemyHull": 0,
+        "playerDamage": 521,
+        "enemyDamage": 112
+      }
+    },
+    {
+      "left": "mixedScrap",
+      "right": "rivetGuard",
+      "forward": {
+        "winner": "enemy",
+        "reason": "time-hull",
+        "ticks": 900,
+        "playerHull": 52,
+        "enemyHull": 144,
+        "playerDamage": 890,
+        "enemyDamage": 189
+      },
+      "reverse": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 149,
+        "playerHull": 0,
+        "enemyHull": 59,
+        "playerDamage": 227,
+        "enemyDamage": 368
+      }
+    },
+    {
+      "left": "mixedScrap",
+      "right": "sparkSkirmish",
+      "forward": {
+        "winner": "enemy",
+        "reason": "time-hull",
+        "ticks": 900,
+        "playerHull": 37,
+        "enemyHull": 92,
+        "playerDamage": 349,
+        "enemyDamage": 904
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 117,
+        "playerHull": 188,
+        "enemyHull": 0,
+        "playerDamage": 291,
+        "enemyDamage": 148
+      }
+    }
+  ]
+}
