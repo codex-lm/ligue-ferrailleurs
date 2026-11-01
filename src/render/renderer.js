@@ -69,7 +69,7 @@ export class Renderer {
       'obstacle-crate', 'obstacle-gear', 'obstacle-spool'
     ];
     const [attachments] = await Promise.all([
-      fetch('./assets/models/attachments.json').then(response => response.json()),
+      fetch('../../assets/models/attachments.json').then(response => response.json()),
       this.library.loadAll([...new Set(names)])
     ]);
     this.attachments = attachments;
