@@ -1,40 +1,39 @@
-import { ARENAS, CHASSIS, MAX_TICKS, MODULES, moduleEntry } from '../data/catalog.js';
+import { ARENAS, CHASSIS, hasModule, MAX_TICKS, MODULES, moduleEntry } from '../data/catalog.js';
 import { chooseUnitAction, cooldownFor } from '../ai/behaviors.js';
-import { distance } from './grid.js';
+import { distance, isAccessible, occupied } from './grid.js';
 import { validateTeam } from './assembly.js';
+import { unlockedModules } from './progression.js';
 
-function makeRuntimeUnit(unit, team, index, arena) {
+function makeRuntimeUnit(unit, team, index, arena, research) {
   const chassis = CHASSIS[unit.chassis];
   const start = unit.position || arena.starts[team][index];
   return {
-    id: unit.id || `${team[0]}${index + 1}`,
-    blueprintId: unit.id || `unit-${index + 1}`,
+    id: unit.id || `${team[0]}${index + 1}`, blueprintId: unit.id || `unit-${index + 1}`,
     name: unit.name || unit.id || `${team}-${index + 1}`,
-    team, chassis: unit.chassis, behavior: unit.behavior || 'nearest',
+    team, chassis: unit.chassis, behavior: unit.behavior || 'nearest', research: [...research],
     modules: (unit.modules || []).map(moduleEntry),
     x: start[0] ?? start.x, y: start[1] ?? start.y,
-    hp: unit.hp ?? chassis.hp, maxHp: chassis.hp,
-    active: true, narrow: chassis.narrow,
+    hp: unit.hp ?? chassis.hp, maxHp: chassis.hp, active: true, narrow: chassis.narrow,
     moveCooldown: 0, cooldowns: {}, priorityTarget: null, retreatUntil: 0,
     overload: null, damageDealt: 0, damageTaken: 0, healingDone: 0,
     lastAction: null, facing: team === 'player' ? 1 : -1
   };
 }
 
-export function createBattle({ playerTeam, enemyTeam, arena = 'workbench', maxTicks = MAX_TICKS, playerHp = null }) {
-  const playerCheck = validateTeam(playerTeam);
-  const enemyCheck = validateTeam(enemyTeam);
+export function createBattle({ playerTeam, enemyTeam, arena = 'workbench', maxTicks = MAX_TICKS, playerHp = null, playerResearch = null, enemyResearch = null }) {
+  const playerCheck = validateTeam(playerTeam, playerResearch ? unlockedModules(playerResearch) : null);
+  const enemyCheck = validateTeam(enemyTeam, enemyResearch ? unlockedModules(enemyResearch) : null);
   if (!playerCheck.valid || !enemyCheck.valid) throw new Error(`Invalid team: ${JSON.stringify({ player: playerCheck.errors, enemy: enemyCheck.errors })}`);
   const board = typeof arena === 'string' ? ARENAS[arena] : arena;
   const units = [
-    ...playerTeam.units.map((unit, index) => makeRuntimeUnit(unit, 'player', index, board)),
-    ...enemyTeam.units.map((unit, index) => makeRuntimeUnit(unit, 'enemy', index, board))
+    ...playerTeam.units.map((unit, index) => makeRuntimeUnit(unit, 'player', index, board, playerResearch || [])),
+    ...enemyTeam.units.map((unit, index) => makeRuntimeUnit(unit, 'enemy', index, board, enemyResearch || []))
   ];
+  for (const unit of units) {
+    if (!isAccessible(board, unit.x, unit.y, true) || occupied({ units }, unit.x, unit.y, unit.id)) throw new Error(`Invalid start position for ${unit.id}`);
+  }
   if (playerHp) units.filter(unit => unit.team === 'player').forEach(unit => { unit.hp = Math.max(1, Math.min(unit.maxHp, playerHp[unit.blueprintId] ?? unit.hp)); });
-  return {
-    tick: 0, maxTicks, arena: board, units, charges: { player: 3, enemy: 3 },
-    result: null, events: [], nextEventId: 1
-  };
+  return { tick: 0, maxTicks, arena: board, units, charges: { player: 3, enemy: 3 }, result: null, events: [], nextEventId: 1 };
 }
 
 function emit(state, event) {
@@ -48,15 +47,19 @@ function deactivate(state, unit, source) {
   emit(state, { type: 'disabled', unit: unit.id, source: source?.id || null, x: unit.x, y: unit.y });
 }
 
+function shieldFactor(state, target) {
+  const shielded = target.modules.some(entry => MODULES[entry.id]?.effect === 'shield') || state.units.some(unit => unit.active && unit.team === target.team && unit.id !== target.id && distance(unit, target) <= 1 && hasModule(unit, 'shield'));
+  if (!shielded) return 1;
+  return target.research.includes('protection-guard') ? 0.6 : 0.7;
+}
+
 function applyDamage(state, source, target, amount, moduleId) {
   if (!target.active) return 0;
   const module = MODULES[moduleId];
   const overloaded = source.overload?.moduleId === moduleId && source.overload.until > state.tick;
-  let value = Math.max(1, Math.round(amount * (overloaded ? 1.35 : 1)));
+  let value = Math.max(1, Math.round(amount * (overloaded ? 1.35 : 1) * (hasModule(source, 'sensor') ? 1.15 : 1)));
   const armor = target.modules.reduce((sum, entry) => sum + (MODULES[entry.id]?.effect === 'armor' ? MODULES[entry.id].amount : 0), 0);
-  value = Math.max(1, value - armor);
-  const protectors = state.units.filter(unit => unit.active && unit.team === target.team && unit.id !== target.id && distance(unit, target) <= 1 && unit.modules.some(entry => MODULES[entry.id]?.effect === 'shield'));
-  if (protectors.length || target.modules.some(entry => MODULES[entry.id]?.effect === 'shield')) value = Math.max(1, Math.round(value * 0.7));
+  value = Math.max(1, Math.round((value - armor) * shieldFactor(state, target)));
   const dealt = Math.min(target.hp, value);
   target.hp -= dealt;
   target.damageTaken += dealt;
@@ -69,15 +72,16 @@ function applyDamage(state, source, target, amount, moduleId) {
 function performAction(state, unit, action) {
   unit.lastAction = action.type;
   if (action.type === 'move') {
-    emit(state, { type: 'move', unit: unit.id, from: [unit.x, unit.y], x: action.x, y: action.y });
+    emit(state, { type: 'move', unit: unit.id, from: [unit.x, unit.y], x: action.x, y: action.y, dash: Boolean(action.boost) });
     unit.x = action.x;
     unit.y = action.y;
-    unit.moveCooldown = CHASSIS[unit.chassis].moveEvery;
+    unit.moveCooldown = Math.max(2, CHASSIS[unit.chassis].moveEvery - (unit.research.includes('mobility-agile') ? 1 : 0));
+    if (action.boost) unit.cooldowns[action.boost.id] = cooldownFor(unit, action.boost, state.tick);
     return;
   }
   if (action.type === 'attack') {
     const module = MODULES[action.module.id];
-    unit.cooldowns[action.module.id] = cooldownFor(unit, action.module);
+    unit.cooldowns[action.module.id] = cooldownFor(unit, action.module, state.tick);
     unit.facing = action.target.x >= unit.x ? 1 : -1;
     if (module.effect === 'aoe') {
       const victims = state.units.filter(other => other.active && other.team !== unit.team && distance(other, action.target) <= module.area);
@@ -90,9 +94,10 @@ function performAction(state, unit, action) {
   }
   if (action.type === 'support') {
     const module = MODULES[action.module.id];
-    unit.cooldowns[action.module.id] = cooldownFor(unit, action.module);
+    unit.cooldowns[action.module.id] = cooldownFor(unit, action.module, state.tick);
     const overloaded = unit.overload?.moduleId === action.module.id && unit.overload.until > state.tick;
-    const healed = Math.min(action.target.maxHp - action.target.hp, Math.round(module.heal * (overloaded ? 1.35 : 1)));
+    const research = unit.research.includes('protection-repair') ? 1.2 : 1;
+    const healed = Math.min(action.target.maxHp - action.target.hp, Math.round(module.heal * (overloaded ? 1.35 : 1) * research));
     action.target.hp += healed;
     unit.healingDone += healed;
     emit(state, { type: 'repair', unit: unit.id, target: action.target.id, module: action.module.id, amount: healed, x: action.target.x, y: action.target.y });
@@ -103,17 +108,13 @@ function finish(state) {
   const teams = ['player', 'enemy'];
   const alive = Object.fromEntries(teams.map(team => [team, state.units.some(unit => unit.active && unit.team === team)]));
   if (!alive.player || !alive.enemy) {
-    state.result = {
-      winner: alive.player ? 'player' : alive.enemy ? 'enemy' : 'draw',
-      reason: 'neutralized', tick: state.tick
-    };
+    state.result = { winner: alive.player ? 'player' : alive.enemy ? 'enemy' : 'draw', reason: 'neutralized', tick: state.tick };
     return;
   }
   if (state.tick < state.maxTicks) return;
   const hull = Object.fromEntries(teams.map(team => [team, state.units.filter(unit => unit.team === team).reduce((sum, unit) => sum + unit.hp / unit.maxHp, 0)]));
   const damage = Object.fromEntries(teams.map(team => [team, state.units.filter(unit => unit.team === team).reduce((sum, unit) => sum + unit.damageDealt, 0)]));
-  const winner = Math.abs(hull.player - hull.enemy) > 0.0001 ? (hull.player > hull.enemy ? 'player' : 'enemy')
-    : damage.player === damage.enemy ? 'draw' : damage.player > damage.enemy ? 'player' : 'enemy';
+  const winner = Math.abs(hull.player - hull.enemy) > 0.0001 ? (hull.player > hull.enemy ? 'player' : 'enemy') : damage.player === damage.enemy ? 'draw' : damage.player > damage.enemy ? 'player' : 'enemy';
   state.result = { winner, reason: winner === 'draw' ? 'time-draw' : Math.abs(hull.player - hull.enemy) > 0.0001 ? 'time-hull' : 'time-damage', tick: state.tick, hull, damage };
 }
 
@@ -127,8 +128,7 @@ export function stepBattle(state) {
   const order = state.units.filter(unit => unit.active).sort((a, b) => ((a.team === 'player' ? 0 : 1) - (b.team === 'player' ? 0 : 1)) * (state.tick % 2 ? 1 : -1) || a.id.localeCompare(b.id));
   for (const unit of order) {
     if (!unit.active || state.result) continue;
-    const action = chooseUnitAction(state, unit);
-    performAction(state, unit, action);
+    performAction(state, unit, chooseUnitAction(state, unit));
     finish(state);
   }
   finish(state);
@@ -147,7 +147,7 @@ export function issueOrder(state, team, order) {
     unit.retreatUntil = state.tick + 35;
   } else if (order.type === 'overload') {
     if (!unit.modules.some(entry => entry.id === order.moduleId)) return { ok: false, reason: 'module' };
-    unit.overload = { moduleId: order.moduleId, until: state.tick + 50 };
+    unit.overload = { moduleId: order.moduleId, until: state.tick + (unit.research.includes('power-surge') ? 70 : 50) };
   } else return { ok: false, reason: 'order' };
   state.charges[team] -= 1;
   emit(state, { type: 'order', order: order.type, unit: unit.id, target: order.targetId || null, module: order.moduleId || null });
