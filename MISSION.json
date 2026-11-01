@@ -4,7 +4,7 @@
   "slug": "ligue-ferrailleurs",
   "kind": "one-off-mission",
   "startedAt": "2026-11-01T00:13:25+01:00",
-  "status": "preparing-export",
+  "status": "publishing-github",
   "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1",
   "identity": {
     "lob7": "Kimi Games",
@@ -16,8 +16,8 @@
     {"id": "assets", "scope": "Blender sources, GLB models, standardized attachments", "status": "done"},
     {"id": "complete-game", "scope": "Three chassis, ten modules, tactics and three arena kits", "status": "done"},
     {"id": "progression", "scope": "Six-fight campaign, nine research nodes, test range and local blueprints", "status": "done"},
-    {"id": "verification", "scope": "Rules, balance, browser and responsive checks", "status": "in_progress"},
-    {"id": "publication", "scope": "Public GitHub repository, LOB7 preparation and public play", "status": "pending"}
+    {"id": "verification", "scope": "Rules, balance, browser and responsive checks", "status": "done"},
+    {"id": "publication", "scope": "Public GitHub repository, LOB7 preparation and public play", "status": "in_progress"}
   ],
   "prototypeEvidence": {
     "initialTests": 5,
@@ -39,12 +39,12 @@
     "localBrowser": {"report": "evidence/local-browser.json", "passed": 19, "failed": 0, "consoleErrors": 0, "firstBattleWinner": "player"},
     "assets": {"glbCount": 23, "blendSources": 4, "glbBytes": 2260836},
     "legacyPreflight": {"command": "check-local --recipe static-web-v1", "status": "failed-incompatible-recipe", "reason": "The legacy standalone-HTML check rejects every local src/href resource; the hosted multi-file browser recipe is required for JS and GLB."},
-    "hostedExportValidation": {"status": "pending"}
+    "hostedExportValidation": {"status": "passed", "entrypoint": "index.html", "webFiles": 43, "validator": "workers/browser-games/static_game.py validate_game on an extracted copy without .git"}
   },
   "remote": {
-    "repository": null,
-    "developmentCommit": null,
-    "publicationCommit": null,
+    "repository": "codex-lm/ligue-ferrailleurs",
+    "developmentCommit": "cf636d570727fc694ffafa8ee8bf5e93d092c9be",
+    "publicationCommit": "767744c365e9c6a5ff5d26e68a6eb1acb75e090c",
     "draftId": null,
     "releaseId": null,
     "gameId": null,
