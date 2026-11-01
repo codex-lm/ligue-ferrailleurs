@@ -4,8 +4,9 @@
   "slug": "ligue-ferrailleurs",
   "kind": "one-off-mission",
   "startedAt": "2026-11-01T00:13:25+01:00",
-  "status": "publishing-github",
-  "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1",
+  "completedAt": "2026-11-01T14:20:22+01:00",
+  "status": "published",
+  "idempotencyKey": "kimi-games-ligue-ferrailleurs-v2",
   "identity": {
     "lob7": "Kimi Games",
     "publicId": "usr_zxb87j1k",
@@ -17,7 +18,7 @@
     {"id": "complete-game", "scope": "Three chassis, ten modules, tactics and three arena kits", "status": "done"},
     {"id": "progression", "scope": "Six-fight campaign, nine research nodes, test range and local blueprints", "status": "done"},
     {"id": "verification", "scope": "Rules, balance, browser and responsive checks", "status": "done"},
-    {"id": "publication", "scope": "Public GitHub repository, LOB7 preparation and public play", "status": "in_progress"}
+    {"id": "publication", "scope": "Public GitHub repository, LOB7 preparation and public play", "status": "done"}
   ],
   "prototypeEvidence": {
     "initialTests": 5,
@@ -33,27 +34,47 @@
     {"name": "hammerPair", "role": "Two mallets and two supports", "finding": "Initially dominated every side-swapped duel; hammer cadence/damage adjusted to 2.8 s/22."},
     {"name": "finalCounter", "role": "Shield wall, repair caster, sensor/boost spider", "finding": "Wins the finale after focusing Oracle and overloading the wall caster."}
   ],
+  "interestingChoices": [
+    "Battery competes with protection and support for sockets and weight, so energy is a real construction constraint.",
+    "Heavy automata must choose between armor, a second weapon and support rather than carrying every answer.",
+    "Repair only targets other allies, making formation and protector positioning matter.",
+    "Spider-only narrow passages, minimum ranged distance and side-swapped test-range comparisons create distinct counters.",
+    "Target priority and overload can reverse the finale without hidden stat bonuses."
+  ],
   "validation": {
     "rules": {"passed": 17, "failed": 0, "command": "npm test", "campaignCompleted": true},
     "balance": {"report": "evidence/balance.json", "dominantConfigurations": []},
     "localBrowser": {"report": "evidence/local-browser.json", "passed": 19, "failed": 0, "consoleErrors": 0, "firstBattleWinner": "player"},
     "assets": {"glbCount": 23, "blendSources": 4, "glbBytes": 2260836},
     "legacyPreflight": {"command": "check-local --recipe static-web-v1", "status": "failed-incompatible-recipe", "reason": "The legacy standalone-HTML check rejects every local src/href resource; the hosted multi-file browser recipe is required for JS and GLB."},
-    "hostedExportValidation": {"status": "passed", "entrypoint": "index.html", "webFiles": 43, "validator": "workers/browser-games/static_game.py validate_game on an extracted copy without .git"}
+    "hostedExportValidation": {"status": "passed", "entrypoint": "index.html", "webFiles": 43, "validator": "workers/browser-games/static_game.py validate_game on an extracted copy without .git"},
+    "nestedAssetPath": {"status": "passed", "scope": "Real application requests under /releases/test/web/hash/"},
+    "lob7Preparation": {"status": "ready", "malware": "passed", "policy": "passed", "runtime": "passed", "staticAnalysis": "passed"},
+    "privatePreview": {"status": "passed", "firstBattleWinner": "player", "scope": "Campaign launch and completed combat"},
+    "publicPlay": {"status": "passed", "scope": "Workshop, launch, pause, unit selection, retreat order, speed 4x, defeat at 28.4 seconds and rebuild/retry", "result": "enemy", "restart": "passed", "evidence": "evidence/ligue-ferrailleurs/public-verification.json"}
   },
   "remote": {
     "repository": "codex-lm/ligue-ferrailleurs",
-    "developmentCommit": "cf636d570727fc694ffafa8ee8bf5e93d092c9be",
-    "publicationCommit": "767744c365e9c6a5ff5d26e68a6eb1acb75e090c",
-    "draftId": null,
-    "releaseId": null,
-    "gameId": null,
-    "variantId": null,
-    "playUrl": null
+    "repositoryUrl": "https://github.com/codex-lm/ligue-ferrailleurs",
+    "developmentCommit": "9ef2b932b80a0cfb543b290c8721f20acf422a4d",
+    "publicationCommit": "71befa4470566374dbb1c805e2ca6cf67ba8c06a",
+    "draftId": "bd_s_e366b8de-438d-4aee-89cc-403cd2bb2380",
+    "releaseId": "br_s_88c36937-fe83-46d0-af12-6ca7988113f4",
+    "gameId": "bg_s_3796f6b1-cc92-4db4-b14d-e48fcbc73134",
+    "variantId": "bv_s_b2722924-04ab-45cc-a91a-26ab4eb926f4",
+    "playUrl": "https://lob7.com/player/br_s_88c36937-fe83-46d0-af12-6ca7988113f4",
+    "previousAttempt": {
+      "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1",
+      "draftId": "bd_s_99aab16f-ed36-4533-b409-079ce238b443",
+      "releaseId": "br_s_0f082f08-ed12-4014-addc-94e62178ca66",
+      "status": "ready-not-published",
+      "reason": "Private preview caught nested asset 404s; corrected with import.meta.url and a new draft required by DRAFT_FROZEN"
+    }
   },
   "limitations": [
     "Ranged attacks use grid distance, not line-of-sight raycasts.",
     "Browser verification covers desktop and a narrow mobile viewport, not a physical-device/GPU matrix.",
+    "The full six-fight campaign was verified in deterministic simulation and the first combat was played publicly; the complete finale was not replayed in the public reader.",
     "The legacy check-local static-web-v1 command does not support this multi-file GLB game; export validation uses the hosted browser validator instead."
   ],
   "scheduledTasksChanged": false,
