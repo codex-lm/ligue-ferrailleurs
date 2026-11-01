@@ -79,7 +79,7 @@ function parse(buffer) {
 }
 
 export class ModelLibrary {
-  constructor(base = '../../assets/models/') {
+  constructor(base = new URL('../../assets/models/', import.meta.url).href) {
     this.base = base;
     this.cache = new Map();
   }
