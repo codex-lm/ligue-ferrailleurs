@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "scope": "local-browser",
+  "checks": {
+    "home-english-default": true,
+    "three-chassis-visible": true,
+    "weight-refusal-visible": true,
+    "invalid-launch-disabled": true,
+    "starting-position-persisted": true,
+    "occupied-position-swaps-default-cell": true,
+    "pause-freezes-simulation": true,
+    "three-tactical-charges-used": true,
+    "battle-reaches-result": true,
+    "nine-research-nodes": true,
+    "research-unlocked": true,
+    "second-encounter-ready": true,
+    "blueprint-restores-modules": true,
+    "test-range-result": true,
+    "result-overlay-cleared-in-workshop": true,
+    "french-interface": true,
+    "spanish-interface": true,
+    "mobile-no-horizontal-overflow": true,
+    "campaign-save-survives-reload": true
+  },
+  "consoleErrors": [],
+  "firstBattleResult": {
+    "winner": "player",
+    "reason": "neutralized",
+    "tick": 227
+  },
+  "passed": true
+}

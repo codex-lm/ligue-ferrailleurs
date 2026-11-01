@@ -1,0 +1,875 @@
+{
+  "schemaVersion": 1,
+  "stage": "complete",
+  "configurations": {
+    "balanced": {
+      "units": [
+        {
+          "id": "nib",
+          "name": "Nib",
+          "chassis": "light",
+          "behavior": "nearest",
+          "modules": [
+            {
+              "id": "blade",
+              "socket": "left"
+            },
+            {
+              "id": "repair",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "clank",
+          "name": "Clank",
+          "chassis": "heavy",
+          "behavior": "nearest",
+          "modules": [
+            {
+              "id": "shield",
+              "socket": "left"
+            },
+            {
+              "id": "blaster",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "pip",
+          "name": "Pip",
+          "chassis": "spider",
+          "behavior": "keepRange",
+          "modules": [
+            {
+              "id": "blaster",
+              "socket": "right"
+            },
+            {
+              "id": "battery",
+              "socket": "back"
+            }
+          ]
+        }
+      ]
+    },
+    "bulwark": {
+      "units": [
+        {
+          "id": "bastion",
+          "name": "Bastion",
+          "chassis": "heavy",
+          "behavior": "protect",
+          "modules": [
+            {
+              "id": "shield",
+              "socket": "left"
+            },
+            {
+              "id": "armor",
+              "socket": "back"
+            },
+            {
+              "id": "blaster",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "socket",
+          "name": "Socket",
+          "chassis": "heavy",
+          "behavior": "nearest",
+          "modules": [
+            {
+              "id": "hammer",
+              "socket": "right"
+            },
+            {
+              "id": "repair",
+              "socket": "back"
+            }
+          ]
+        },
+        {
+          "id": "gleam",
+          "name": "Gleam",
+          "chassis": "spider",
+          "behavior": "fragile",
+          "modules": [
+            {
+              "id": "repair",
+              "socket": "top"
+            },
+            {
+              "id": "battery",
+              "socket": "back"
+            },
+            {
+              "id": "sensor",
+              "socket": "left"
+            }
+          ]
+        }
+      ]
+    },
+    "skirmish": {
+      "units": [
+        {
+          "id": "zip",
+          "name": "Zip",
+          "chassis": "light",
+          "behavior": "fragile",
+          "modules": [
+            {
+              "id": "blade",
+              "socket": "left"
+            },
+            {
+              "id": "boost",
+              "socket": "back"
+            },
+            {
+              "id": "battery",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "dot",
+          "name": "Dot",
+          "chassis": "spider",
+          "behavior": "keepRange",
+          "modules": [
+            {
+              "id": "blaster",
+              "socket": "right"
+            },
+            {
+              "id": "sensor",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "moth",
+          "name": "Moth",
+          "chassis": "light",
+          "behavior": "keepRange",
+          "modules": [
+            {
+              "id": "mortar",
+              "socket": "top"
+            },
+            {
+              "id": "battery",
+              "socket": "back"
+            }
+          ]
+        }
+      ]
+    },
+    "rangedWall": {
+      "units": [
+        {
+          "id": "wall",
+          "name": "wall",
+          "chassis": "heavy",
+          "behavior": "protect",
+          "modules": [
+            {
+              "id": "shield",
+              "socket": "left"
+            },
+            {
+              "id": "armor",
+              "socket": "back"
+            },
+            {
+              "id": "blaster",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "gun",
+          "name": "gun",
+          "chassis": "heavy",
+          "behavior": "keepRange",
+          "modules": [
+            {
+              "id": "blaster",
+              "socket": "right"
+            },
+            {
+              "id": "repair",
+              "socket": "back"
+            },
+            {
+              "id": "battery",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "mortar",
+          "name": "mortar",
+          "chassis": "spider",
+          "behavior": "keepRange",
+          "modules": [
+            {
+              "id": "mortar",
+              "socket": "top"
+            },
+            {
+              "id": "battery",
+              "socket": "back"
+            },
+            {
+              "id": "blade",
+              "socket": "left"
+            }
+          ]
+        }
+      ]
+    },
+    "hammerPair": {
+      "units": [
+        {
+          "id": "mallet",
+          "name": "mallet",
+          "chassis": "heavy",
+          "behavior": "nearest",
+          "modules": [
+            {
+              "id": "hammer",
+              "socket": "left"
+            },
+            {
+              "id": "repair",
+              "socket": "back"
+            },
+            {
+              "id": "battery",
+              "socket": "top"
+            }
+          ]
+        },
+        {
+          "id": "rivet",
+          "name": "rivet",
+          "chassis": "heavy",
+          "behavior": "nearest",
+          "modules": [
+            {
+              "id": "hammer",
+              "socket": "left"
+            },
+            {
+              "id": "blaster",
+              "socket": "right"
+            }
+          ]
+        },
+        {
+          "id": "mender",
+          "name": "mender",
+          "chassis": "spider",
+          "behavior": "keepRange",
+          "modules": [
+            {
+              "id": "blaster",
+              "socket": "right"
+            },
+            {
+              "id": "repair",
+              "socket": "top"
+            },
+            {
+              "id": "battery",
+              "socket": "back"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "validation": {
+    "balanced": {
+      "valid": true,
+      "errors": []
+    },
+    "bulwark": {
+      "valid": true,
+      "errors": []
+    },
+    "skirmish": {
+      "valid": true,
+      "errors": []
+    },
+    "rangedWall": {
+      "valid": true,
+      "errors": []
+    },
+    "hammerPair": {
+      "valid": true,
+      "errors": []
+    }
+  },
+  "duels": [
+    {
+      "left": "balanced",
+      "right": "bulwark",
+      "forward": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 287,
+        "playerHull": 0,
+        "enemyHull": 12,
+        "playerDamage": 323,
+        "enemyDamage": 206
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 308,
+        "playerHull": 77,
+        "enemyHull": 0,
+        "playerDamage": 212,
+        "enemyDamage": 349
+      }
+    },
+    {
+      "left": "balanced",
+      "right": "skirmish",
+      "forward": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 101,
+        "playerHull": 70,
+        "enemyHull": 0,
+        "playerDamage": 166,
+        "enemyDamage": 161
+      },
+      "reverse": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 117,
+        "playerHull": 0,
+        "enemyHull": 53,
+        "playerDamage": 178,
+        "enemyDamage": 166
+      }
+    },
+    {
+      "left": "balanced",
+      "right": "rangedWall",
+      "forward": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 193,
+        "playerHull": 0,
+        "enemyHull": 52,
+        "playerDamage": 214,
+        "enemyDamage": 227
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 188,
+        "playerHull": 47,
+        "enemyHull": 0,
+        "playerDamage": 239,
+        "enemyDamage": 267
+      }
+    },
+    {
+      "left": "balanced",
+      "right": "hammerPair",
+      "forward": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 189,
+        "playerHull": 0,
+        "enemyHull": 72,
+        "playerDamage": 258,
+        "enemyDamage": 222
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 151,
+        "playerHull": 234,
+        "enemyHull": 0,
+        "playerDamage": 262,
+        "enemyDamage": 232
+      }
+    },
+    {
+      "left": "bulwark",
+      "right": "skirmish",
+      "forward": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 160,
+        "playerHull": 246,
+        "enemyHull": 0,
+        "playerDamage": 166,
+        "enemyDamage": 222
+      },
+      "reverse": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 108,
+        "playerHull": 0,
+        "enemyHull": 238,
+        "playerDamage": 148,
+        "enemyDamage": 166
+      }
+    },
+    {
+      "left": "bulwark",
+      "right": "rangedWall",
+      "forward": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 177,
+        "playerHull": 0,
+        "enemyHull": 182,
+        "playerDamage": 166,
+        "enemyDamage": 369
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 192,
+        "playerHull": 134,
+        "enemyHull": 0,
+        "playerDamage": 350,
+        "enemyDamage": 172
+      }
+    },
+    {
+      "left": "bulwark",
+      "right": "hammerPair",
+      "forward": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 324,
+        "playerHull": 42,
+        "enemyHull": 0,
+        "playerDamage": 384,
+        "enemyDamage": 516
+      },
+      "reverse": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 166,
+        "playerHull": 192,
+        "enemyHull": 0,
+        "playerDamage": 317,
+        "enemyDamage": 164
+      }
+    },
+    {
+      "left": "rangedWall",
+      "right": "skirmish",
+      "forward": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 81,
+        "playerHull": 140,
+        "enemyHull": 0,
+        "playerDamage": 166,
+        "enemyDamage": 163
+      },
+      "reverse": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 75,
+        "playerHull": 0,
+        "enemyHull": 158,
+        "playerDamage": 133,
+        "enemyDamage": 166
+      }
+    },
+    {
+      "left": "hammerPair",
+      "right": "skirmish",
+      "forward": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 99,
+        "playerHull": 145,
+        "enemyHull": 0,
+        "playerDamage": 166,
+        "enemyDamage": 170
+      },
+      "reverse": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 91,
+        "playerHull": 0,
+        "enemyHull": 234,
+        "playerDamage": 141,
+        "enemyDamage": 166
+      }
+    },
+    {
+      "left": "hammerPair",
+      "right": "rangedWall",
+      "forward": {
+        "winner": "player",
+        "reason": "neutralized",
+        "ticks": 269,
+        "playerHull": 98,
+        "enemyHull": 0,
+        "playerDamage": 317,
+        "enemyDamage": 417
+      },
+      "reverse": {
+        "winner": "enemy",
+        "reason": "neutralized",
+        "ticks": 284,
+        "playerHull": 0,
+        "enemyHull": 246,
+        "playerDamage": 485,
+        "enemyDamage": 344
+      }
+    }
+  ],
+  "opponentMatches": [
+    {
+      "configuration": "balanced",
+      "opponent": "tin-can-choir",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 159,
+      "playerHull": 133,
+      "enemyHull": 0,
+      "playerDamage": 236,
+      "enemyDamage": 80
+    },
+    {
+      "configuration": "balanced",
+      "opponent": "roof-runners",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 129,
+      "playerHull": 100,
+      "enemyHull": 0,
+      "playerDamage": 231,
+      "enemyDamage": 120
+    },
+    {
+      "configuration": "balanced",
+      "opponent": "glasshouse-garden",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 184,
+      "playerHull": 180,
+      "enemyHull": 0,
+      "playerDamage": 256,
+      "enemyDamage": 112
+    },
+    {
+      "configuration": "balanced",
+      "opponent": "iron-umbrella",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 236,
+      "playerHull": 0,
+      "enemyHull": 84,
+      "playerDamage": 178,
+      "enemyDamage": 228
+    },
+    {
+      "configuration": "balanced",
+      "opponent": "needle-parliament",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 148,
+      "playerHull": 0,
+      "enemyHull": 135,
+      "playerDamage": 186,
+      "enemyDamage": 217
+    },
+    {
+      "configuration": "balanced",
+      "opponent": "grand-salvager",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 155,
+      "playerHull": 0,
+      "enemyHull": 178,
+      "playerDamage": 170,
+      "enemyDamage": 251
+    },
+    {
+      "configuration": "bulwark",
+      "opponent": "tin-can-choir",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 178,
+      "playerHull": 0,
+      "enemyHull": 139,
+      "playerDamage": 191,
+      "enemyDamage": 286
+    },
+    {
+      "configuration": "bulwark",
+      "opponent": "roof-runners",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 284,
+      "playerHull": 231,
+      "enemyHull": 0,
+      "playerDamage": 321,
+      "enemyDamage": 254
+    },
+    {
+      "configuration": "bulwark",
+      "opponent": "glasshouse-garden",
+      "winner": "enemy",
+      "reason": "time-hull",
+      "ticks": 900,
+      "playerHull": 184,
+      "enemyHull": 191,
+      "playerDamage": 740,
+      "enemyDamage": 377
+    },
+    {
+      "configuration": "bulwark",
+      "opponent": "iron-umbrella",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 200,
+      "playerHull": 0,
+      "enemyHull": 226,
+      "playerDamage": 131,
+      "enemyDamage": 334
+    },
+    {
+      "configuration": "bulwark",
+      "opponent": "needle-parliament",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 289,
+      "playerHull": 0,
+      "enemyHull": 32,
+      "playerDamage": 280,
+      "enemyDamage": 409
+    },
+    {
+      "configuration": "bulwark",
+      "opponent": "grand-salvager",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 180,
+      "playerHull": 0,
+      "enemyHull": 228,
+      "playerDamage": 108,
+      "enemyDamage": 276
+    },
+    {
+      "configuration": "skirmish",
+      "opponent": "tin-can-choir",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 93,
+      "playerHull": 0,
+      "enemyHull": 133,
+      "playerDamage": 129,
+      "enemyDamage": 166
+    },
+    {
+      "configuration": "skirmish",
+      "opponent": "roof-runners",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 126,
+      "playerHull": 32,
+      "enemyHull": 0,
+      "playerDamage": 218,
+      "enemyDamage": 134
+    },
+    {
+      "configuration": "skirmish",
+      "opponent": "glasshouse-garden",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 206,
+      "playerHull": 121,
+      "enemyHull": 0,
+      "playerDamage": 218,
+      "enemyDamage": 45
+    },
+    {
+      "configuration": "skirmish",
+      "opponent": "iron-umbrella",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 164,
+      "playerHull": 0,
+      "enemyHull": 163,
+      "playerDamage": 196,
+      "enemyDamage": 166
+    },
+    {
+      "configuration": "skirmish",
+      "opponent": "needle-parliament",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 110,
+      "playerHull": 0,
+      "enemyHull": 86,
+      "playerDamage": 198,
+      "enemyDamage": 166
+    },
+    {
+      "configuration": "skirmish",
+      "opponent": "grand-salvager",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 180,
+      "playerHull": 0,
+      "enemyHull": 222,
+      "playerDamage": 140,
+      "enemyDamage": 166
+    },
+    {
+      "configuration": "rangedWall",
+      "opponent": "tin-can-choir",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 105,
+      "playerHull": 190,
+      "enemyHull": 0,
+      "playerDamage": 221,
+      "enemyDamage": 56
+    },
+    {
+      "configuration": "rangedWall",
+      "opponent": "roof-runners",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 128,
+      "playerHull": 134,
+      "enemyHull": 0,
+      "playerDamage": 221,
+      "enemyDamage": 130
+    },
+    {
+      "configuration": "rangedWall",
+      "opponent": "glasshouse-garden",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 105,
+      "playerHull": 184,
+      "enemyHull": 0,
+      "playerDamage": 229,
+      "enemyDamage": 95
+    },
+    {
+      "configuration": "rangedWall",
+      "opponent": "iron-umbrella",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 201,
+      "playerHull": 154,
+      "enemyHull": 0,
+      "playerDamage": 362,
+      "enemyDamage": 106
+    },
+    {
+      "configuration": "rangedWall",
+      "opponent": "needle-parliament",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 106,
+      "playerHull": 194,
+      "enemyHull": 0,
+      "playerDamage": 256,
+      "enemyDamage": 116
+    },
+    {
+      "configuration": "rangedWall",
+      "opponent": "grand-salvager",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 291,
+      "playerHull": 0,
+      "enemyHull": 27,
+      "playerDamage": 285,
+      "enemyDamage": 297
+    },
+    {
+      "configuration": "hammerPair",
+      "opponent": "tin-can-choir",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 135,
+      "playerHull": 246,
+      "enemyHull": 0,
+      "playerDamage": 206,
+      "enemyDamage": 60
+    },
+    {
+      "configuration": "hammerPair",
+      "opponent": "roof-runners",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 142,
+      "playerHull": 230,
+      "enemyHull": 0,
+      "playerDamage": 206,
+      "enemyDamage": 136
+    },
+    {
+      "configuration": "hammerPair",
+      "opponent": "glasshouse-garden",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 252,
+      "playerHull": 230,
+      "enemyHull": 0,
+      "playerDamage": 334,
+      "enemyDamage": 228
+    },
+    {
+      "configuration": "hammerPair",
+      "opponent": "iron-umbrella",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 270,
+      "playerHull": 42,
+      "enemyHull": 0,
+      "playerDamage": 262,
+      "enemyDamage": 335
+    },
+    {
+      "configuration": "hammerPair",
+      "opponent": "needle-parliament",
+      "winner": "player",
+      "reason": "neutralized",
+      "ticks": 168,
+      "playerHull": 118,
+      "enemyHull": 0,
+      "playerDamage": 261,
+      "enemyDamage": 234
+    },
+    {
+      "configuration": "hammerPair",
+      "opponent": "grand-salvager",
+      "winner": "enemy",
+      "reason": "neutralized",
+      "ticks": 177,
+      "playerHull": 0,
+      "enemyHull": 114,
+      "playerDamage": 182,
+      "enemyDamage": 456
+    }
+  ],
+  "dominantConfigurations": []
+}

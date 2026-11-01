@@ -30,7 +30,7 @@ test('two chassis and three modules create measurable combat differences', () =>
     unit('c', 'light', ['blade', 'repair'])
   ]);
   const ranged = team([
-    unit('d', 'light', ['blaster', 'repair'], 'keepRange'),
+    unit('d', 'heavy', ['blaster', 'repair'], 'keepRange'),
     unit('e', 'light', ['blaster'], 'keepRange'),
     unit('f', 'heavy', ['blaster', 'repair'], 'keepRange')
   ]);

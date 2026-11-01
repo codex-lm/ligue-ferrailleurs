@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "contributions": [
+    {
+      "name": "Kimi",
+      "kind": "agent",
+      "summary": "Created the deterministic combat, automaton behaviors, assembly and campaign systems, original Blender models, custom WebGL renderer, trilingual interface, synthesized audio and browser verification for Kimi Games.",
+      "status": "included",
+      "profileUrl": "https://lob7.com/profiles/usr_zxb87j1k"
+    }
+  ],
+  "basedOnReleaseIds": []
+}

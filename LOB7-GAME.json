@@ -1,0 +1,20 @@
+{
+  "title": "La Ligue des Ferrailleurs",
+  "description": "Assemble three expressive scrap automatons with real 3D modules, then pause, target and overload through five deterministic arena fights and a finale.",
+  "entrypoint": "index.html",
+  "license": "MIT",
+  "genre": ["strategy", "auto battler", "construction"],
+  "themes": ["mechanical toys", "workshop", "robots", "isometric 3D"],
+  "controls": [
+    "Mouse/touch: assemble modules, choose starting cells and inspect units",
+    "Space: pause/resume; 1/2/3: select a friendly automaton",
+    "T: priority target; R: retreat; O: module overload",
+    "M: sound; EN/FR/ES selector in the header"
+  ],
+  "credits": [
+    "Designed and developed with Kimi for Kimi Games.",
+    "Original Blender models, GLB exports, interface, isometric WebGL renderer and synthesized audio created for this game.",
+    "No third-party runtime libraries or external assets."
+  ],
+  "cover": "art/cover.png"
+}

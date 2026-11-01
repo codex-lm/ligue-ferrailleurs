@@ -4,7 +4,7 @@
   "slug": "ligue-ferrailleurs",
   "kind": "one-off-mission",
   "startedAt": "2026-11-01T00:13:25+01:00",
-  "status": "developing-prototype",
+  "status": "preparing-export",
   "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1",
   "identity": {
     "lob7": "Kimi Games",
@@ -12,16 +12,35 @@
     "github": "codex-lm"
   },
   "phases": [
-    {"id": "prototype", "scope": "Two chassis, three modules, one arena", "status": "in_progress"},
-    {"id": "assets", "scope": "Blender sources, GLB models, standardized attachments", "status": "pending"},
-    {"id": "complete-game", "scope": "Three chassis, ten modules, tactics and three arena kits", "status": "pending"},
-    {"id": "progression", "scope": "Six-fight campaign, nine research nodes, test range and local blueprints", "status": "pending"},
-    {"id": "verification", "scope": "Rules, balance, browser and responsive checks", "status": "pending"},
+    {"id": "prototype", "scope": "Two chassis, three modules, one arena", "status": "done"},
+    {"id": "assets", "scope": "Blender sources, GLB models, standardized attachments", "status": "done"},
+    {"id": "complete-game", "scope": "Three chassis, ten modules, tactics and three arena kits", "status": "done"},
+    {"id": "progression", "scope": "Six-fight campaign, nine research nodes, test range and local blueprints", "status": "done"},
+    {"id": "verification", "scope": "Rules, balance, browser and responsive checks", "status": "in_progress"},
     {"id": "publication", "scope": "Public GitHub repository, LOB7 preparation and public play", "status": "pending"}
   ],
-  "prototypeEvidence": null,
-  "configurationsTried": [],
-  "validation": {},
+  "prototypeEvidence": {
+    "initialTests": 5,
+    "report": "evidence/prototype-balance.json",
+    "finding": "Ranged and melee/support assemblies produced different deterministic winners before content expansion.",
+    "commit": "c136b77"
+  },
+  "configurationsTried": [
+    {"name": "balanced", "role": "Light blade/repair, heavy shield/caster, spider caster/battery", "finding": "Wins the first three encounters but needs adaptation later."},
+    {"name": "bulwark", "role": "Heavy protection and repair", "finding": "Strong into ranged pressure; can force timeout tiebreaks against repair teams."},
+    {"name": "skirmish", "role": "Boost, sensor and mortar", "finding": "Fast and decisive in some matchups, fragile into heavy pressure."},
+    {"name": "rangedWall", "role": "Shield/armor wall, repair caster and spider mortar", "finding": "Carries encounters four and five; loses the finale without tactical adaptation."},
+    {"name": "hammerPair", "role": "Two mallets and two supports", "finding": "Initially dominated every side-swapped duel; hammer cadence/damage adjusted to 2.8 s/22."},
+    {"name": "finalCounter", "role": "Shield wall, repair caster, sensor/boost spider", "finding": "Wins the finale after focusing Oracle and overloading the wall caster."}
+  ],
+  "validation": {
+    "rules": {"passed": 17, "failed": 0, "command": "npm test", "campaignCompleted": true},
+    "balance": {"report": "evidence/balance.json", "dominantConfigurations": []},
+    "localBrowser": {"report": "evidence/local-browser.json", "passed": 19, "failed": 0, "consoleErrors": 0, "firstBattleWinner": "player"},
+    "assets": {"glbCount": 23, "blendSources": 4, "glbBytes": 2260836},
+    "legacyPreflight": {"command": "check-local --recipe static-web-v1", "status": "failed-incompatible-recipe", "reason": "The legacy standalone-HTML check rejects every local src/href resource; the hosted multi-file browser recipe is required for JS and GLB."},
+    "hostedExportValidation": {"status": "pending"}
+  },
   "remote": {
     "repository": null,
     "developmentCommit": null,
@@ -32,7 +51,11 @@
     "variantId": null,
     "playUrl": null
   },
-  "limitations": [],
+  "limitations": [
+    "Ranged attacks use grid distance, not line-of-sight raycasts.",
+    "Browser verification covers desktop and a narrow mobile viewport, not a physical-device/GPU matrix.",
+    "The legacy check-local static-web-v1 command does not support this multi-file GLB game; export validation uses the hosted browser validator instead."
+  ],
   "scheduledTasksChanged": false,
   "otherProjectsChanged": false
 }
