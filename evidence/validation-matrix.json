@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "specificationVersion": "1.0 — 2026-11-03",
   "implementationVersion": "1.1.0",
-  "commit": "working-tree",
+  "commit": "d97188bb03df00eb52bd080773d5eaf86c27446d",
   "statusValues": ["Réussi", "Échec", "Non vérifié"],
   "criteria": [
     {"id":"L01","status":"Réussi","evidence":"evidence/layout-confirmation.json et refonte-confirm-1280x720.png : plateau, pause, charges, ordres et confirmation sans défilement."},
@@ -94,7 +94,7 @@
 
     {"id":"P01","status":"Réussi","evidence":"Paquet local complet : 30 tests, recette navigateur, GLB et aucune erreur console ou ressource data:."},
     {"id":"P02","status":"Réussi","evidence":"Campagne complète en simulation dans campaign.test.js ; victoire et défaite réelles, rejeu et progression dans refonte-browser.json."},
-    {"id":"P03","status":"Non vérifié","evidence":"Le lecteur public et le plein écran de la nouvelle édition ne sont pas encore vérifiés."},
+    {"id":"P03","status":"Non vérifié","evidence":"evidence/ligue-ferrailleurs/publication-2026-11-03.json : lecteur public joué, préparation, ordre et entrée plein écran réussis ; sortie plein écran non vérifiée à cause d’une autorisation réservée à l’utilisateur."},
     {"id":"P04","status":"Non vérifié","evidence":"Sources Blender, GLB et manifeste présents, palette appliquée aux 23 GLB ; régénération Blender non exécutée car Blender est absent."},
     {"id":"P05","status":"Non vérifié","evidence":"Aucun testeur externe pour l’observation de cinq secondes."},
     {"id":"P06","status":"Non vérifié","evidence":"Aucun testeur externe pour distinguer action, consigne et prévision."},

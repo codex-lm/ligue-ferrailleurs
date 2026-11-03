@@ -80,9 +80,14 @@
   "currentImprovement": {
     "version": "1.1.0",
     "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1-1-readability",
-    "status": "local-verified",
+    "status": "published",
     "scope": "Combat readability, tactical confirmations, exact intentions and ranges, deterministic replay, responsive interface and calmer GLB palette, without changing combat statistics.",
     "parentReleaseId": "br_s_88c36937-fe83-46d0-af12-6ca7988113f4",
+    "commit": "d97188bb03df00eb52bd080773d5eaf86c27446d",
+    "draftId": "bd_s_aff91b61-e447-44c3-befb-e2a37c8ebb8a",
+    "releaseId": "br_s_3f7a4c65-d3c8-4173-85af-b7c4a12f60f4",
+    "playUrl": "https://lob7.com/player/br_s_3f7a4c65-d3c8-4173-85af-b7c4a12f60f4",
+    "publicVerification": "Private preview and public reader played: workshop, suspended preparation, begin/pause, priority confirmation, persistent badge, replay and 2/3 charges. Fullscreen entry verified; exit not verified due to a user-only browser permission.",
     "validation": {
       "rules": "30/30 passed",
       "browser": "77 real-browser checks passed with zero console errors, including a real victory and reward uniqueness",
