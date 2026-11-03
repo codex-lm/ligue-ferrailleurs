@@ -10,7 +10,7 @@
     },
     {
       "name": "Cédric",
-      "kind": "human",
+      "kind": "person",
       "summary": "Supplied the detailed combat-readability and artistic specification with 24 sections, 88 acceptance criteria and six reference mockups used for the 1.1.0 refonte.",
       "status": "included"
     }
