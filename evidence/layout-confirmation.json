@@ -1,0 +1,7 @@
+{
+  "1280x720": {"confirmVisible": true, "noScroll": true, "screenshot": "refonte-confirm-1280x720.png"},
+  "844x390": {"confirmVisible": true, "noScroll": true, "screenshot": "refonte-confirm-844x390.png"},
+  "1024x768": {"confirmVisible": true, "noScroll": true, "drawer": true, "drawerClosed": true},
+  "768x1024": {"confirmVisible": true, "noScroll": true, "drawer": true, "drawerClosed": true},
+  "consoleErrors": []
+}

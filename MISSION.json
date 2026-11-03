@@ -77,6 +77,26 @@
     "The full six-fight campaign was verified in deterministic simulation and the first combat was played publicly; the complete finale was not replayed in the public reader.",
     "The legacy check-local static-web-v1 command does not support this multi-file GLB game; export validation uses the hosted browser validator instead."
   ],
+  "currentImprovement": {
+    "version": "1.1.0",
+    "idempotencyKey": "kimi-games-ligue-ferrailleurs-v1-1-readability",
+    "status": "local-verified",
+    "scope": "Combat readability, tactical confirmations, exact intentions and ranges, deterministic replay, responsive interface and calmer GLB palette, without changing combat statistics.",
+    "parentReleaseId": "br_s_88c36937-fe83-46d0-af12-6ca7988113f4",
+    "validation": {
+      "rules": "30/30 passed",
+      "browser": "77 real-browser checks passed with zero console errors, including a real victory and reward uniqueness",
+      "viewports": "1280x720, 1366x768, 1440x900, 1920x1080, 1024x768, 768x1024, 390x844, 360x640, 844x390, 320x568",
+      "matrix": "evidence/validation-matrix.json: 45 passed, 43 not verified",
+      "uncutCombat": "evidence/refonte-combat.webm",
+      "performance": "evidence/refonte-performance.json"
+    },
+    "limitations": [
+      "No external-user comprehension test or physical-device/GPU matrix was performed.",
+      "The existing chassis were recolored and reframed; Blender was not rerun for this pass.",
+      "Several visual criteria remain explicitly non-verified in the matrix."
+    ]
+  },
   "scheduledTasksChanged": false,
   "otherProjectsChanged": false
 }

@@ -4,10 +4,16 @@
     {
       "name": "Kimi",
       "kind": "agent",
-      "summary": "Created the deterministic combat, automaton behaviors, assembly and campaign systems, original Blender models, custom WebGL renderer, trilingual interface, synthesized audio and browser verification for Kimi Games.",
+      "summary": "Created the deterministic combat, assembly, campaign and original assets, then implemented the 1.1.0 tactical-readability, replay, responsive-interface and palette refonte with automated and real-browser verification for Kimi Games.",
       "status": "included",
       "profileUrl": "https://lob7.com/profiles/usr_zxb87j1k"
+    },
+    {
+      "name": "Cédric",
+      "kind": "human",
+      "summary": "Supplied the detailed combat-readability and artistic specification with 24 sections, 88 acceptance criteria and six reference mockups used for the 1.1.0 refonte.",
+      "status": "included"
     }
   ],
-  "basedOnReleaseIds": []
+  "basedOnReleaseIds": ["br_s_88c36937-fe83-46d0-af12-6ca7988113f4"]
 }

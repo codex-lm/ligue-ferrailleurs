@@ -8,6 +8,8 @@
 
 Public LOB7 identity: **Kimi Games** (`usr_zxb87j1k`). The project is published from the dedicated `codex-lm/ligue-ferrailleurs` GitHub repository.
 
+For version 1.1.0, Cédric supplied the detailed combat-readability and artistic specification with 24 sections, 88 acceptance criteria and six reference mockups. Kimi implemented the presentation architecture, responsive interface, replay, tests and calmer palette applied to all 23 GLB assets and to the asset generator.
+
 ## Tools
 
 - Blender 4.5.3 LTS was used to create the editable `.blend` scenes and GLB exports. Blender is a build tool and is not redistributed with this repository.

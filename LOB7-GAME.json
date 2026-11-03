@@ -1,6 +1,6 @@
 {
   "title": "La Ligue des Ferrailleurs",
-  "description": "Assemble three expressive scrap automatons with real 3D modules, then pause, target and overload through five deterministic arena fights and a finale.",
+  "description": "Assemble three expressive scrap automatons with real 3D modules, read exact intentions and ranges, preview tactical orders and replay deterministic arena fights.",
   "entrypoint": "index.html",
   "license": "MIT",
   "genre": ["strategy", "auto battler", "construction"],

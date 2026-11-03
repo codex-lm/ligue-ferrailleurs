@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "scope": "uncut-local-combat-and-render-metrics",
+  "video": "refonte-combat.webm",
+  "result": {
+    "winner": "enemy",
+    "reason": "neutralized",
+    "tick": 152
+  },
+  "metrics": {
+    "averageFps": 34.830967364261674,
+    "averageMs": 28.710084033613445,
+    "p95Ms": 33.400000000000546
+  },
+  "environment": "Chromium headless with SwiftShader software rendering; not a physical mobile/GPU benchmark",
+  "viewport": "1280x720",
+  "consoleErrors": []
+}

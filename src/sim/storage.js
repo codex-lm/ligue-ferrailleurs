@@ -15,6 +15,7 @@ export function createStorage(backing = null) {
     }
   })();
   return {
+    persistent: Boolean(available),
     get(key, fallback = null) {
       try {
         const raw = available ? available.getItem(PREFIX + key) : memory.get(key);
